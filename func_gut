@@ -1,0 +1,12 @@
+setenv GIT_BRANCH_CMD `sh -c 'git branch --no-color 2> /dev/null' | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+git checkout master
+make
+if ("$1" != '') then
+    git checkout ticket$1
+    git merge master --no-ff
+else if ("$GIT_BRANCH_CMD" != '') then
+    git checkout $GIT_BRANCH_CMD
+    git merge master --no-ff
+endif
+gp
+gst

@@ -1,0 +1,1 @@
+gr $1 * | awk -F: '{print $1}' | sort | uniq | xargs

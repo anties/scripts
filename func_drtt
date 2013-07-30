@@ -1,0 +1,12 @@
+set i = 0
+foreach var ($*)
+    if ($i == 0) then
+        set ticket = $var
+    else
+        cd ~/work/"$var"
+        git checkout master
+        make
+        make deploy TICKET=$ticket
+    endif
+    @ i = $i + 1
+end

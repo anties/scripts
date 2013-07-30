@@ -1,0 +1,7 @@
+git branch ticket$1
+git push origin ticket$1
+git branch -d ticket$1
+git checkout ticket$1
+if ("$2" == '-b') then
+    make buildticket
+endif
